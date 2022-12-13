@@ -1,4 +1,3 @@
-FROM php:7.2-apache
+FROM httpd:2.4
 
-
-COPY apache-php-image/ /var/www/html/
+COPY apache-php-image/ /usr/local/apache2/htdocs/
