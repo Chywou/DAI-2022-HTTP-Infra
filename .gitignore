@@ -30,4 +30,4 @@ bin/
 
 .idea/
 
-docker-images/Etape2/express-image/src/node_modules/
+docker-images/Etape2_Express-image/src/node_modules/

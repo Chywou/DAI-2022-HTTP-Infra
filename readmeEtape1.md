@@ -10,7 +10,7 @@ utilisé et adapté pour un rendu plus propre.
 Le serveur est dans un container docker qui est mappé du côté utilisateur au port 9090 et port 80 (HTTP) 
 pour le serveur.
 
-### Contenu du dossier ```Etape1 ```
+### Contenu du dossier ```Etape1_Apache-php-image ```
 - build-image.sh : script contenant la commande permettant de créer l'image docker
 - run-container.sh : script contenant la commande permettant de lancer l'image docker (à modifier si on souhaite modifié le port de l'utilisateur)
 - Dockerfile : configuration souhaitée de l'image docker
@@ -19,7 +19,7 @@ pour le serveur.
 
 ## Commande pour lancer le serveur statique
 
-Il faut tout d'abord accéder au chemin ```docker-images/Etape1``` afin 
+Il faut tout d'abord accéder au chemin ```docker-images/Etape1_Apache-php-image``` afin 
 d'accéder 
 aux outils pour utiliser 
 le serveur http statique.
