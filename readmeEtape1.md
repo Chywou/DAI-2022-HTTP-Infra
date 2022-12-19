@@ -10,11 +10,11 @@ utilisé et adapté pour un rendu plus propre.
 Le serveur est dans un container docker qui est mappé du côté utilisateur au port 9090 et port 80 (HTTP) 
 pour le serveur.
 
-### Contenu du dossier ```Etape1_Apache-php-image ```
+### Contenu du dossier ```Etape1_Apache-image ```
 - build-image.sh : script contenant la commande permettant de créer l'image docker
 - run-container.sh : script contenant la commande permettant de lancer l'image docker (à modifier si on souhaite modifié le port de l'utilisateur)
 - Dockerfile : configuration souhaitée de l'image docker
-- apache-php-image : dossier contenant le contenu du site web affiché par le 
+- apache-config : dossier contenant le contenu du site web affiché par le 
   serveur web (à modifier si on souhaite modifier le site)
 
 ## Commande pour lancer le serveur statique
