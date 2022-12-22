@@ -6,15 +6,15 @@ Laetitia Guidetti et Cédric Centeno
 Cette partie contient un serveur HTTP dynamique permettant d'afficher une page 
 web différente pour chaque nouvelle requête client. Nous utilisons le framework 
 Express.js pour simplifier l'implémentation de la communication client-serveur. 
-Pour la génération aléatoire, nous utilisons la bibliothèque Chance.js.
-Pour chaque requête, le serveur va générer un nouveau contenu pour la page web, 
-dans le cas de cette étape, des données au format json.
+Une page contient des données au format JSON généré aléatoirement via la 
+bibliothèque Chance.js. Ses données représentent des chats et pour chaque requête, 
+le serveur va générer un nouveau contenu pour la page web.
 
 Le serveur est dans un container docker qui est mappé du côté utilisateur au port 
 9091 et port 2022 pour le serveur (le serveur est configuré pour écouter les 
 requêtes clients à ce port). 
 
-### Contenu du dossier ```Etape2_Express-image ```
+### Contenu du dossier ```docker-images/Etape2_Express-image ```
 - build-image.sh : script contenant la commande permettant de créer l'image docker
 - run-container.sh : script contenant la commande permettant de lancer l'image docker (à modifier si on souhaite modifié le port de l'utilisateur)
 - Dockerfile : configuration souhaitée de l'image docker
@@ -41,7 +41,7 @@ est générée.
 #### Prérequis
 - telnet
 
-Il est possible de se connecter manuellement, pour se faire il faut que le 
+Il est possible de se connecter manuellement, pour cela, il faut que le 
 serveur soit à l'écoute. Il faut ensuite entrer en ligne de commande les 
 instructions suivantes :
 - se connecter au serveur : ```telnet localhost 9091``` 
