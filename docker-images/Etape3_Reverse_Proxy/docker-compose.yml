@@ -1,12 +1,28 @@
 version: "3.9"  # optional since v1.27.0
 services:
-  static_web_server:
+  reverse-proxy:
+    # The official v2 Traefik docker image
+    image: traefik:v2.9
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker
+    ports:
+      # The HTTP port
+      - "80:80"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+  static_server:
     build: ../Etape1_Apache-image/
-    ports:
-      - "9090:80"
     image: http_centeno_guidetti/http_server
-  dynamic_web_server:
-    build: ../Etape2_Express-image/
-    ports:
-      - "9091:2022"
-    image: http_centeno_guidetti/express_chats
+    labels:
+      - "traefik.http.routers.static_server.rule=Host(`localhost`)"
+  dynamic_server:
+   build: ../Etape2_Express-image/
+   image: http_centeno_guidetti/express_chats
+   labels:
+     - "traefik.http.routers.dynamic_server.rule=Host(`localhost`) && Path(`/api`)"
+     - "traefik.http.services.dynamic_server.loadbalancer.server.port=2022"
+     - "traefik.http.routers.dynamic_server.middlewares=dynamic_server-stripprefix"
+     - "traefik.http.middlewares.dynamic_server-stripprefix.stripprefix.prefixes=/api"
