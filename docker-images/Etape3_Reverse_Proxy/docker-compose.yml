@@ -1,4 +1,3 @@
-version: "3.9"  # optional since v1.27.0
 services:
   reverse-proxy:
     # The official v2 Traefik docker image
@@ -16,13 +15,20 @@ services:
   static_server:
     build: ../Etape1_Apache-image/
     image: http_centeno_guidetti/http_server
+    deploy:
+      replicas: 2
+    ports:
+      - "80"
     labels:
       - "traefik.http.routers.static_server.rule=Host(`localhost`)"
   dynamic_server:
    build: ../Etape2_Express-image/
    image: http_centeno_guidetti/express_chats
+   deploy:
+     replicas: 3
+   ports:
+     - "2022"
    labels:
      - "traefik.http.routers.dynamic_server.rule=Host(`localhost`) && Path(`/api`)"
-     - "traefik.http.services.dynamic_server.loadbalancer.server.port=2022"
      - "traefik.http.routers.dynamic_server.middlewares=dynamic_server-stripprefix"
      - "traefik.http.middlewares.dynamic_server-stripprefix.stripprefix.prefixes=/api"
