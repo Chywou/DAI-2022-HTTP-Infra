@@ -57,6 +57,12 @@ de chats sera envoyée au client en format json à travers HTTP.
 
 ## Configuration
 
+### Script
+
+Script build-image.sh :
+
+Script run-container-sh :
+
 ### Dockerfile
 Le fichier contient les lignes suivantes :
 

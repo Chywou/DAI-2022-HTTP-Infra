@@ -35,6 +35,12 @@ d'accéder à la page web en entrant l'adresse suivante dans un navigateur :
 
 ## Configuration
 
+### Script
+
+Script build-image.sh :
+
+Script run-container-sh :
+
 ### Dockerfile
 Le fichier contient les lignes suivantes :
 
