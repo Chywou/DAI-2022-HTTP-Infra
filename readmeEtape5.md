@@ -1,6 +1,33 @@
 # Étape 5 : Répartition de charge: round-robin et sessions permanentes 
 Laetitia Guidetti et Cédric Centeno
 
+## Description
+
+Cette partie est une modification apportée au serveur http statique de l'étape 3.
+
+La gestion des deux serveurs (statique et dynamique) est faite par Trafik, le 
+moyen de répartition des charges est par défaut Round Robin. 
+
+Il s'agit dans cette 
+étape de changer le mode de distribution de charge du serveur statique en 
+mode de session permanente.
+
+Une session permanente permet d'établir un lien entre un client et un serveur 
+(dans notre cas, un cookie). Ce lien permet de diriger les requêtes du client 
+vers le même serveur.
+
+### Contenu du dossier, accès aux pages Web
+
+Voir [**readmeEtape3**](readmeEtape3.md)
+
+## Configuration
+
+La configuration est identique à [**l'étape 3**](readmeEtape3.md), à l'exeption 
+de l'ajout des sessions permanente sur le serveur statique.
+### Modification dockerCompose
+#### static_server
+Ajout d'un label permettant d'activer les sessions permanentes à l'aide de cookies.
+
 ## Demonstration du fonctionnement
 
 ### Sans l'ajout du cookie

@@ -44,4 +44,42 @@ Après avoir construit les images et lancé les serveurs grâce à Docker, il es
 
 Script docker-compose-run.sh :
 
+Le script exécute la commande suivante : ```docker-compose -p reverse-proxy up```.
+Cette commande crée et lance un container en spécifiant le nom du projet 
+(reverse-proxy).
+
+
 ### docker-compose
+
+Le docker compose comprend 3 services :
+
+#### reverse-proxy
+Nous utilisons **Traefik** comme reverse proxy. La configuration comprend :
+- l'image Trafik à utiliser 
+- la commande permettant d'activer l'interface utilisateur web, ainsi que 
+  d'écouter docker
+- le mapping des ports utilisés
+- dans volume, lier le montage du fichier correspondant à la socket Unix que 
+  Docker daemon écoute par défaut. Docker daemon écoute les requêtes API et les 
+  les transmet au volume, ici la socket.
+
+#### static_server
+Le serveur static que nous avons créer dans [**l'étape 1**](readmeEtape1.md).
+Il faut préciser :
+- le chemin d'exécution du build de l'image du serveur statique.
+- le nombre de containers qui devraient fonctionner en tout temps (replicas).
+- le port d'écoute du container.
+- le label précisant le domaine du serveur, ici localhost.
+
+#### dynamic_server
+Le serveur static que nous avons créer dans [**l'étape 2**](readmeEtape2.md).
+Il faut préciser :
+- le chemin d'exécution du build de l'image du serveur dynamique.
+- le nombre de containers qui devraient fonctionner en tout temps (replicas).
+- le port d'écoute du container.
+- les labels :
+  - le domaine ainsi que le chemin (localhost/api).
+  - créer un middleware afin de retirer ```api``` de la requête url, car le 
+    serveur dynamique est configuré pour écouter sur localhost, api est utilisé 
+    par le reverse proxy pour diriger les requêtes.
+
