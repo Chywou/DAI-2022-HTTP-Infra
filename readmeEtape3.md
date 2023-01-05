@@ -38,6 +38,24 @@ Après avoir construit les images et lancé les serveurs grâce à Docker, il es
 
 ## Multiple instances
 
+Afin de tester que les différents serveurs répondent aux différentes requêtes 
+avec Round-Robin, on affiche le log des requêtes dynamiques.
+Voici l'extrait d'un test : 
+
+```
+reverse-proxy-dynamic_server-3  | sample text
+reverse-proxy-dynamic_server-1  | sample text
+reverse-proxy-dynamic_server-2  | sample text
+reverse-proxy-dynamic_server-3  | sample text
+reverse-proxy-dynamic_server-1  | sample text
+reverse-proxy-dynamic_server-2  | sample text
+reverse-proxy-dynamic_server-3  | sample text
+reverse-proxy-dynamic_server-1  | sample text
+reverse-proxy-dynamic_server-2  | sample text
+reverse-proxy-dynamic_server-3  | sample text
+reverse-proxy-dynamic_server-1  | sample text
+```
+
 ## Configuration
 
 ### Script

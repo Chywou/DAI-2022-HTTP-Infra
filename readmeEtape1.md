@@ -37,9 +37,13 @@ d'accéder à la page web en entrant l'adresse suivante dans un navigateur :
 
 ### Script
 
-Script build-image.sh :
+Script build-image.sh : créer l'image docker
+- ```--tag http_centeno_guidetti/http_server``` : donne un nom à l'image
 
-Script run-container-sh :
+Script run-container-sh : lance le container
+- ```-p 9090:80``` : mapping des ports du container
+- ```-d``` : lance le container en arrière plan
+- 
 
 ### Dockerfile
 Le fichier contient les lignes suivantes :
