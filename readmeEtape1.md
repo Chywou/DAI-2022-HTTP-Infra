@@ -52,6 +52,10 @@ Le fichier contient les lignes suivantes :
 - Importe l'image docker (ici httpd:2.4) avec la commande FROM.
   Source : https://hub.docker.com/_/httpd
 
+`EXPOSE 80`
+- Expose le port 80 du container (fait part le -p du script docker-run, mais ajouté à
+  titre informatif)
+
 ```COPY apache-php-image/ /usr/local/apache2/htdocs/```
 - Copier les fichiers locaux contenant l'implémentation du site web dans le dossier d'accueil du serveur
 

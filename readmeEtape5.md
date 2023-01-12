@@ -54,3 +54,8 @@ Ajout d'un label permettant d'activer les sessions permanentes à l'aide de cook
 - On peut observer dans le navigateur que le cookie est bien présent.
 
   ![instances_sans_cookie](readmeFiles/Etape5_cookie_dans_navigateur.jpg)
+
+Si l'on souhaite avoir une chance de changer d'instance de serveur, il y a plusieur options :
+- modifier le cookie
+- supprimer le cookie
+- utilisé une session de navigateur privée

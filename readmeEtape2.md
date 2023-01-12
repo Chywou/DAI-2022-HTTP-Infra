@@ -60,8 +60,11 @@ de chats sera envoyée au client en format json à travers HTTP.
 ### Script
 
 Script build-image.sh :
+- `--tag http_centeno_guidetti/express_chats .` : spécifie le nom de l'image, le 
+  '.' indique ou trouver le dockerFile 
 
 Script run-container-sh :
+- `-p 9091:2022` : mapping des ports host/container
 
 ### Dockerfile
 Le fichier contient les lignes suivantes :
@@ -72,6 +75,10 @@ Le fichier contient les lignes suivantes :
 
 ```COPY src /opt/app```
 - Copier les fichiers locaux contenant l'implémentation du site web dans le dossier d'accueil du serveur
+
+`EXPOSE 2022`
+- Expose le port 2022 du container (fait part le -p du script docker-run, mais 
+  ajouté à titre informatif)
 
 ```CMD ["node", "/opt/app/index.js"]```
 - Commande qui sera exécutée lorsqu'un container est lancé sur la base de notre 
