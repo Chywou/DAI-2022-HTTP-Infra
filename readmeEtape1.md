@@ -38,12 +38,17 @@ d'accéder à la page web en entrant l'adresse suivante dans un navigateur :
 ### Script
 
 Script build-image.sh : créer l'image docker
-- ```--tag http_centeno_guidetti/http_server``` : donne un nom à l'image
+- ```docker build --tag http_centeno_guidetti/http_server .```
+  - ```docker build``` : construit une image
+  - ```--tag http_centeno_guidetti/http_server``` : donne un nom à l'image
+  - ```.``` : le contexte, ici le répertoire courant
 
 Script run-container-sh : lance le container
-- ```-p 9090:80``` : mapping des ports du container
-- ```-d``` : lance le container en arrière plan
-- 
+- ```docker run -p 9090:80 -d http_centeno_guidetti/http_server``` : la commande présente dans le script
+  - ```docker run``` : lance un container
+  - ```-p 9090:80``` : mapping des ports du container
+  - ```-d``` : lance le container en arrière-plan
+  - ```http_centeno_guidetti/http_server``` : l'image utilisée pour construire le container
 
 ### Dockerfile
 Le fichier contient les lignes suivantes :
@@ -53,16 +58,17 @@ Le fichier contient les lignes suivantes :
   Source : https://hub.docker.com/_/httpd
 
 `EXPOSE 80`
-- Expose le port 80 du container (fait part le -p du script docker-run, mais ajouté à
-  titre informatif)
+- Expose le port 80 du container (ceci est déjà réalisé par l'option -p 
+de la commande docker-run, mais est ajouté à titre informatif)
+
 
 ```COPY apache-php-image/ /usr/local/apache2/htdocs/```
-- Copier les fichiers locaux contenant l'implémentation du site web dans le dossier d'accueil du serveur
+- Copie les fichiers locaux contenant l'implémentation du site web dans le dossier d'accueil du serveur
 
 ### Fichiers de configurations apache
 
 Le contenu requis par le serveur virtuel est spécifié par DocumentRoot. Pour apache, il s'agit par défaut du dossier
-/usr/local/apache2/htdocs. La page web de base du serveur est le fichier index.html qu'il trouve dans ce dossier.
+```/usr/local/apache2/htdocs```. La page web de base du serveur est le fichier index.html qu'il trouve dans ce dossier.
 
 
 ### Source template page web

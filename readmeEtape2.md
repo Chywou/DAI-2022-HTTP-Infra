@@ -8,11 +8,11 @@ web différente pour chaque nouvelle requête client. Nous utilisons le framewor
 Express.js pour simplifier l'implémentation de la communication client-serveur. 
 Une page contient des données au format JSON généré aléatoirement via la 
 bibliothèque Chance.js. Ses données représentent des chats et pour chaque requête, 
-le serveur va générer un nouveau contenu pour la page web.
+le serveur va générer un nouveau contenu.
 
 Le serveur est dans un container docker qui est mappé du côté utilisateur au port 
 9091 et port 2022 pour le serveur (le serveur est configuré pour écouter les 
-requêtes clients à ce port). 
+requêtes clientes à ce port). 
 
 ### Contenu du dossier ```docker-images/Etape2_Express-image ```
 - build-image.sh : script contenant la commande permettant de créer l'image docker
@@ -37,15 +37,15 @@ d'accéder à la page web en entrant l'adresse suivante dans un navigateur :
 Vous pourrez constater qu'à chaque nouvelle requête, une nouvelle page de 'Cats' 
 est générée.
 
-### Connection manuelle
+### Connexion manuelle
 #### Prérequis
 - telnet
 
 Il est possible de se connecter manuellement, pour cela, il faut que le 
 serveur soit à l'écoute. Il faut ensuite entrer en ligne de commande les 
 instructions suivantes :
-- se connecter au serveur : ```telnet localhost 9091``` 
-- requête GET: ```GET / HTTP/1.0```
+- Se connecter au serveur : ```telnet localhost 9091``` 
+- Requête GET: ```GET / HTTP/1.0```
 
 
 ## Fonctionnement de l'application web
@@ -54,17 +54,22 @@ Nous avons appelé notre application **Cats**, la version est 0.1.0.
 aléatoire de chat, ayant des attributs aussi aléatoirement générés. Cette liste 
 de chats sera envoyée au client en format json à travers HTTP.
 
-
 ## Configuration
 
 ### Script
 
-Script build-image.sh :
-- `--tag http_centeno_guidetti/express_chats .` : spécifie le nom de l'image, le 
-  '.' indique ou trouver le dockerFile 
+Script build-image.sh : créer l'image docker
+- ```docker build --tag http_centeno_guidetti/express_chats .```
+  - ```docker build``` : construit une image
+  - ```--tag http_centeno_guidetti/express_chats``` : donne un nom à l'image
+  - ```.``` : le contexte, ici le répertoire courant
 
-Script run-container-sh :
-- `-p 9091:2022` : mapping des ports host/container
+Script run-container-sh : lance le container
+- ```docker run -p 9091:2022 http_centeno_guidetti/express_chats``` : la commande présente dans le script
+  - ```docker run``` : lance un container
+  - ```-p 9091:2022``` : mapping des ports du container
+  - ```http_centeno_guidetti/express_chats``` : l'image utilisée pour construire le container
+
 
 ### Dockerfile
 Le fichier contient les lignes suivantes :
@@ -74,11 +79,17 @@ Le fichier contient les lignes suivantes :
   Source : https://hub.docker.com/_/node
 
 ```COPY src /opt/app```
-- Copier les fichiers locaux contenant l'implémentation du site web dans le dossier d'accueil du serveur
+- Copie les fichiers locaux contenant l'implémentation du site web dans le dossier d'accueil du serveur
 
-`EXPOSE 2022`
+```EXPOSE 2022```
 - Expose le port 2022 du container (fait part le -p du script docker-run, mais 
   ajouté à titre informatif)
+
+```WORKDIR /opt/app```
+-  Spécifie le dossier de travail pour la commande RUN 
+
+```RUN npm install```
+- Installe les packages nécessaires au fonctionnement de notre application
 
 ```CMD ["node", "/opt/app/index.js"]```
 - Commande qui sera exécutée lorsqu'un container est lancé sur la base de notre 
