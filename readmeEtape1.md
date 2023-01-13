@@ -44,7 +44,7 @@ Script build-image.sh : créer l'image docker
   - ```.``` : le contexte, ici le répertoire courant
 
 Script run-container-sh : lance le container
-- ```docker run -p 9090:80 -d http_centeno_guidetti/http_server``` : la commande présente dans le script
+- ```docker run -p 9090:80 -d http_centeno_guidetti/http_server```
   - ```docker run``` : lance un container
   - ```-p 9090:80``` : mapping des ports du container
   - ```-d``` : lance le container en arrière-plan

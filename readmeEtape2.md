@@ -65,7 +65,7 @@ Script build-image.sh : créer l'image docker
   - ```.``` : le contexte, ici le répertoire courant
 
 Script run-container-sh : lance le container
-- ```docker run -p 9091:2022 http_centeno_guidetti/express_chats``` : la commande présente dans le script
+- ```docker run -p 9091:2022 http_centeno_guidetti/express_chats```
   - ```docker run``` : lance un container
   - ```-p 9091:2022``` : mapping des ports du container
   - ```http_centeno_guidetti/express_chats``` : l'image utilisée pour construire le container
