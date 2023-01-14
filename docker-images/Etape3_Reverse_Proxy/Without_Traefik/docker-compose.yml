@@ -1,0 +1,12 @@
+
+services:
+  static_web_server:
+    build: ../../Etape1_Apache-image/
+    ports:
+      - "9090:80"
+    image: http_centeno_guidetti/http_server
+  dynamic_web_server:
+    build: ../../Etape2_Express-image/
+    ports:
+      - "9091:2022"
+    image: http_centeno_guidetti/express_chats

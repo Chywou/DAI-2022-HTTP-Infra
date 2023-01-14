@@ -1,0 +1,1 @@
+docker-compose -p infra-without-traefik up

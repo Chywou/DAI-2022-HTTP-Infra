@@ -24,17 +24,35 @@ d'un service. Si un serveur tombe, sa charge est répartie sur les autres serveu
 - docker-compose-run.sh : script contenant la commande permettant de construire les images et de démarrer les containers
 - docker-compose.yml : fichier définissant les services composants l'application exécutable dans un environnement isolé
 
-## Commande pour lancer le reverse proxy
+## Commande pour lancer l'infrastructeur
 
+#### Avec le reverse proxy
 Il faut tout d'abord accéder au chemin ```docker-images/Etape3_Reverse_Proxy``` afin
 d'accéder au docker-compose.
 
 - Construire les images docker et lancer les containers : exécuter le script ```docker-compose-run.sh```.
 
+#### Sans le reverse proxy
+
+Il faut tout d'abord accéder au chemin ```docker-images/Etape3_Reverse_Proxy/Without_Traefik``` afin
+d'accéder au docker-compose.
+
+- Construire les images docker et lancer les containers : exécuter le script ```docker-compose-run.sh```.
+
+
 ## Accès aux pages Web
+
+#### Avec le reverse proxy
 
 Après avoir construit les images et lancé les serveurs grâce à Docker, il est possible d'accéder au serveur statique à l'adresse :
 ```localhost``` et accéder au serveur dynamique à l'adresse ```localhost/api```.
+La version avec reverse proxy utilise le serveur statique de l'étape 4.
+
+#### Sans le reverse proxy
+
+Après avoir construit les images et lancé les serveurs grâce à Docker, il est possible d'accéder au serveur statique à l'adresse :
+```127.0.0.1:9090``` et accéder au serveur dynamique à l'adresse ```127.0.0.1:9091```.
+La version sans reverse proxy utilise le serveur statique de l'étape 1.
 
 ## Multiple instances
 
@@ -62,9 +80,9 @@ reverse-proxy-dynamic_server-1  | sample text
 
 Script docker-compose-run.sh :
 
-Le script exécute la commande suivante : ```docker-compose -p reverse-proxy up```.
+Le script exécute la commande suivante : ```docker-compose -p web-infrastructure up```.
 Cette commande crée et lance un container en spécifiant le nom du projet 
-(reverse-proxy).
+(web-infrastructure).
 
 
 ### docker-compose

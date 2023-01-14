@@ -14,7 +14,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   static_server:
     build: ../Etape4_Ajax_image/
-    image: http_centeno_guidetti/http_server
+    image: http_centeno_guidetti/ajax_request
     deploy:
       replicas: 2
     ports:

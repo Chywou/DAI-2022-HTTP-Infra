@@ -1,1 +1,1 @@
-docker-compose -p reverse-proxy up
+docker-compose -p web-infrastructure up
