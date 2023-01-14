@@ -16,9 +16,15 @@ supprimer.
 
 ## Commande pour déployer le serveur portainer
 ### Avec script
+
+L'exécution du script peut poser des problèmes pour les utilisateurs 
+Windows utilisant WSL. Le script est réalisable qu'avec un terminal linux à jour
+(Ubuntu par exemple). Si vous n'en utilisez pas veuillez vous référer à la partie **Sans script**
+expliquant comment déployer le serveur via des commandes.
 Pour accéder au script, ouvrir un terminal et accéder au chemin 
 ```docker-images/Etape6_UI-management```. Puis exécuter le script avec la 
 commander ```./run-portainer.sh```.
+
 ### Sans script
 Ouvrir un terminal pour entrer les deux commandes suivantes :
 - ```docker volume create portainer_data``` : Crée un volume que le serveur 

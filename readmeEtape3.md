@@ -61,17 +61,17 @@ avec Round-Robin (par défaut), on affiche le log des requêtes dynamiques.
 Voici l'extrait d'un test : 
 
 ```
-reverse-proxy-dynamic_server-3  | sample text
-reverse-proxy-dynamic_server-1  | sample text
-reverse-proxy-dynamic_server-2  | sample text
-reverse-proxy-dynamic_server-3  | sample text
-reverse-proxy-dynamic_server-1  | sample text
-reverse-proxy-dynamic_server-2  | sample text
-reverse-proxy-dynamic_server-3  | sample text
-reverse-proxy-dynamic_server-1  | sample text
-reverse-proxy-dynamic_server-2  | sample text
-reverse-proxy-dynamic_server-3  | sample text
-reverse-proxy-dynamic_server-1  | sample text
+web-infrastructure-dynamic_server-3  | sample text
+web-infrastructure-dynamic_server-1  | sample text
+web-infrastructure-dynamic_server-2  | sample text
+web-infrastructure-dynamic_server-3  | sample text
+web-infrastructure-dynamic_server-1  | sample text
+web-infrastructure-dynamic_server-2  | sample text
+web-infrastructure-dynamic_server-3  | sample text
+web-infrastructure-dynamic_server-1  | sample text
+web-infrastructure-dynamic_server-2  | sample text
+web-infrastructure-dynamic_server-3  | sample text
+web-infrastructure-dynamic_server-1  | sample text
 ```
 
 ## Configuration

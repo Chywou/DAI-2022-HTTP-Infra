@@ -34,6 +34,9 @@ Ajout de labels permettant d'activer les sessions permanentes à l'aide de cooki
 
 ## Demonstration du fonctionnement
 
+Pour réaliser le test, il faut désactiver les logs du serveur dynamique afin que la console
+soit lisible.
+
 ### Sans l'ajout du cookie
 - Mettre en commentaire les lignes permettant la session permanente dans le 
   docker-compose.yml.
