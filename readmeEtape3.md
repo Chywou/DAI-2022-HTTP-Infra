@@ -74,6 +74,14 @@ web-infrastructure-dynamic_server-3  | sample text
 web-infrastructure-dynamic_server-1  | sample text
 ```
 
+### Changer le nombre d'instance
+Afin de changer le nombre d'instance et vérifier la bonne répartition des charge 
+faite par Traefik,
+utilisez la commande `docker-compose -p web-infrastructure up --scale 
+static_server=5 -d`.
+`-d` : optionnel pour lancer le container en background
+`--scale static_server=5` : passe le nombre d'instance du serveur statique à 5
+
 ## Configuration
 
 ### Script
